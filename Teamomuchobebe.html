@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">   
+
+  <title>Botones   
+ Si y No</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    #buttonContainer {
+      position: relative;
+      text-align: center;
+    }
+
+    #title {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    .button {
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: font-size 0.3s ease;
+    }
+
+    .green {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+    }
+
+    .red {
+      background-color: #f44336;
+      color: white;
+      border: none;
+    }
+
+    .green:hover {
+      transform: scale(1.1);
+    }
+
+    #gif {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      z-index: -1;
+    }
+
+    #noButton {
+      position: fixed; /* Posiciona el botón en relación a la ventana */
+      top: 0;
+      left: 0;
+    }
+  </style>
+</head>
+<body>
+  <div id="title">¿ME EXTRAÑAS? ¿QUIERES VERME?</div>
+
+  <div id="buttonContainer">
+    <img id="gif" src="https://media1.tenor.com/m/tsSKU6SqB1AAAAAC/toy-triste.gif" alt="Corazón latiendo">
+    <div style="display: flex; justify-content: center;">
+      <button id="yesButton" class="button green">Si</button>
+      <button id="noButton" class="button red">No</button>
+    </div>
+  </div>
+
+  <script>
+    document.getElementById("yesButton").addEventListener("click", function() {
+      const message = "Te extraño como no tienes idea, eres el amor de mi vida y por favor deja de hacerme la ley del hielo";
+      const redirectURL = "https://www.youtube.com/watch?v=HJqlA_HTEU8"; // Replace with your desired YouTube video URL
+
+      if (confirm(message)) {
+        window.location.href = redirectURL; // Redirect to YouTube URL
+      }
+    });
+
+    document.getElementById("noButton").addEventListener("click", function(event) {
+      event.preventDefault();
+
+      const button = event.target;
+      const maxX = window.innerWidth - button.offsetWidth;
+      const maxY = window.innerHeight - button.offsetHeight;
+
+      // Calculamos nuevas coordenadas aleatorias cada vez que se hace clic
+      let newX = Math.floor(Math.random() * maxX);
+      let newY = Math.floor(Math.random() * maxY);
+
+      button.style.left = newX + 'px';
+      button.style.top = newY + 'px';
+    });
+  </script>
+</body>
+</html>
